@@ -36,29 +36,42 @@ document.getElementById("dropdownThree").innerHTML += dropdownThreeText;
 //     {a: 7, b: 8}
 //  ];
 
- function filterValue(obj, key, value) {
+getData();
+
+function filterValue(obj, key, value) {
     console.log(obj.filter(function(v){ return v[key] === value}));
     return obj.filter(function(v){ return v[key] === value});
   }
 
 
-let dataSubjectWise = [];
+function getData(){
+    let dataSubjectWise = [];
 
-for(let i=0; i<dropdownOne.length; i++){
-    dataSubjectWise.push(filterValue(data, "subject", dropdownOne[i]));
-}
-
-console.log('DataSubjectWise--->', dataSubjectWise);
-
-let bodyText = '';
-
-for(let i=0; i<dataSubjectWise.length; i++){
-    bodyText += `<div class="col-md-4" style="margin-top:40px"><h3>${dataSubjectWise[i][0].subject}</h3><div class="accordion" id="accordionExample">`
-    for(let j=0; j<dataSubjectWise[i].length; j++){
-        bodyText += `<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${i}${j}" aria-expanded="false" aria-controls="collapseOne">${dataSubjectWise[i][j]['topic']}</button></h2><div id="collapseOne${i}${j}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">${dataSubjectWise[i][j].description}</div></div></div>`;
+    for(let i=0; i<dropdownOne.length; i++){
+        dataSubjectWise.push(filterValue(data, "subject", dropdownOne[i]));
     }
-    bodyText += '</div></div>'
-    console.log('DataSubjectWise line--->', dataSubjectWise);
-}
 
-document.getElementById("bodyText").innerHTML += bodyText;
+    console.log('DataSubjectWise--->', dataSubjectWise);
+
+    let bodyText = '';
+
+    for(let i=0; i<dataSubjectWise.length; i++){
+        bodyText += `<div class="col-md-4" style="margin-top:60px"><h3 style="padding: 20px 0px 20px 0px">${dataSubjectWise[i][0].subject}</h3><div class="card" style="height: 90%;"><div class="card-body"><div class="accordion" id="accordionExample">`
+        for(let j=0; j<dataSubjectWise[i].length; j++){
+            bodyText += `<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${i}${j}" aria-expanded="false" aria-controls="collapseOne">${dataSubjectWise[i][j]['topic']}</button></h2><div id="collapseOne${i}${j}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">${dataSubjectWise[i][j].description}</div></div></div>`;
+        }
+        bodyText += '</div></div></div></div>';
+        console.log('DataSubjectWise line--->', dataSubjectWise);
+    }
+
+    document.getElementById("bodyText").innerHTML += bodyText;
+  }
+
+  function resetData(){
+    document.getElementById("bodyText").innerHTML = '';
+    getData();
+  }
+
+  function filterDataSubject(){
+
+  }
