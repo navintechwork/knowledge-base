@@ -72,6 +72,85 @@ function getData(){
     getData();
   }
 
-  function filterDataSubject(){
+  function filterDataSubject(filterText){
+    let dataSubjectWise = [];
 
+    for(let i=0; i<dropdownOne.length; i++){
+        dataSubjectWise.push(filterValue(data, "subject", dropdownOne[i]));
+    }
+
+    console.log('DataSubjectWise--->', dataSubjectWise);
+
+    let bodyText = '';
+
+    for(let i=0; i<dataSubjectWise.length; i++){
+        if(dataSubjectWise[i][0].subject == filterText){
+            bodyText += `<div class="col-md-4" style="margin-top:60px"><h3 style="padding: 20px 0px 20px 0px">${dataSubjectWise[i][0].subject}</h3><div class="card" style="height: 90%;"><div class="card-body"><div class="accordion" id="accordionExample">`
+        }
+        
+        for(let j=0; j<dataSubjectWise[i].length; j++){
+            if(dataSubjectWise[i][0].subject == filterText){
+                bodyText += `<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${i}${j}" aria-expanded="false" aria-controls="collapseOne">${dataSubjectWise[i][j]['topic']}</button></h2><div id="collapseOne${i}${j}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">${dataSubjectWise[i][j].description}</div></div></div>`;
+            }
+        }
+        bodyText += '</div></div></div></div>';
+        console.log('DataSubjectWise line--->', dataSubjectWise);
+    }
+
+    document.getElementById("bodyText").innerHTML = bodyText;
+  }
+
+  var elementsOne = document.getElementsByClassName('dropdownOne');
+
+  Array.from(elementsOne).forEach((element) => {
+  element.addEventListener('click', (event) => {
+    // alert(`Clicked ${event.target.innerText}!`);
+    filterDataSubject(event.target.innerText);
+  });
+  });
+
+  var elementsTwo = document.getElementsByClassName('dropdownTwo');
+
+  Array.from(elementsTwo).forEach((element) => {
+  element.addEventListener('click', (event) => {
+    // alert(`Clicked ${event.target.innerText}!`);
+    filterDataTopic(event.target.innerText);
+  });
+  });
+
+  var elementsThree = document.getElementsByClassName('dropdownThree');
+
+  Array.from(elementsThree).forEach((element) => {
+  element.addEventListener('click', (event) => {
+    alert(`Clicked ${event.target.innerText}!`);
+  });
+  });
+
+  function filterDataTopic(filterText){
+    let dataSubjectWise = [];
+
+    for(let i=0; i<dropdownOne.length; i++){
+        dataSubjectWise.push(filterValue(data, "subject", dropdownOne[i]));
+    }
+
+    console.log('DataSubjectWise--->', dataSubjectWise);
+
+    let bodyText = '';
+
+    for(let i=0; i<dataSubjectWise.length; i++){
+        // if(dataSubjectWise[i][0].subject == filterText){
+        //     bodyText += `<div class="col-md-4" style="margin-top:60px"><h3 style="padding: 20px 0px 20px 0px">${dataSubjectWise[i][0].subject}</h3><div class="card" style="height: 90%;"><div class="card-body"><div class="accordion" id="accordionExample">`
+        // }
+        
+        for(let j=0; j<dataSubjectWise[i].length; j++){
+            if(dataSubjectWise[i][j].topic == filterText){
+                bodyText += `<div class="col-md-4" style="margin-top:60px"><h3 style="padding: 20px 0px 20px 0px">${dataSubjectWise[i][0].subject}</h3><div class="card" style="height: 90%;"><div class="card-body"><div class="accordion" id="accordionExample">`
+                bodyText += `<div class="accordion-item"><h2 class="accordion-header" id="headingOne"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${i}${j}" aria-expanded="false" aria-controls="collapseOne">${dataSubjectWise[i][j]['topic']}</button></h2><div id="collapseOne${i}${j}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample"><div class="accordion-body">${dataSubjectWise[i][j].description}</div></div></div>`;
+            }
+        }
+        bodyText += '</div></div></div></div>';
+        console.log('DataSubjectWise line--->', dataSubjectWise);
+    }
+
+    document.getElementById("bodyText").innerHTML = bodyText;
   }

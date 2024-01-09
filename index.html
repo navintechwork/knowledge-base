@@ -45,14 +45,14 @@
 
         <div class="row">
             <div class="col-md-1">
-                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="resetData()">Reset</button>
             </div>
             <div class="col-md-1">
                 <div class="dropdown">
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                       Subject
                     </button>
-                    <div class="dropdown-menu" id="dropdownOne"></div>
+                    <div class="dropdown-menu dropdownOne" id="dropdownOne"></div>
                     <!-- <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Link 1</a>
                       <a class="dropdown-item" href="#">Link 2</a>
@@ -65,7 +65,7 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                       Topic
                     </button>
-                    <div class="dropdown-menu" id="dropdownTwo"></div>
+                    <div class="dropdown-menu dropdownTwo" id="dropdownTwo"></div>
                     <!-- <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Link 1</a>
                       <a class="dropdown-item" href="#">Link 2</a>
@@ -78,13 +78,22 @@
                     <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
                       Description
                     </button>
-                    <div class="dropdown-menu" id="dropdownThree"></div>
+                    <div class="dropdown-menu dropdownThree" id="dropdownThree"></div>
                     <!-- <div class="dropdown-menu">
                       <a class="dropdown-item" href="#">Link 1</a>
                       <a class="dropdown-item" href="#">Link 2</a>
                       <a class="dropdown-item" href="#">Link 3</a>
                     </div> -->
                 </div>
+            </div>
+            <div class="col-md-3">
+              <div class="input-group input-group-lg mb-3" style="margin-left: 40px;width: 80%;">
+                <!-- <span class="input-group-text">Large</span> -->
+                <input type="text" placeholder="Search Description" class="form-control">
+              </div>
+            </div>
+            <div class="col-md-1">
+              <button type="button" class="btn  btn-primary">Search</button>
             </div>
 
 
